@@ -1,7 +1,8 @@
 # BilliardOrbitFinder
 Matlab code to find Birkhoff and non-Birkhoff orbits in convex billiard via gradient flow.
 
-These codes are provided as supplementary material of the preprint "Non-Birkhoff choreographies in symmetric billiards", https://arxiv.org/abs/XXXX.YYYYY.
+These codes are provided as supplementary material of the preprint "Non-Birkhoff choreographies in symmetric billiards", https://arxiv.org/abs/XXXX.YYYYY, see Appendix B therein.
+
 If you use these codes for your research, we kindly ask you to cite our preprint as well.
 
 The gist of the algorithm is as follows:
