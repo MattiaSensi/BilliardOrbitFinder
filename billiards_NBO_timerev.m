@@ -30,7 +30,7 @@ end
 
 %standard forward integration of the dynamical system with ode45
 x0 = x;
-tspan = [0 3000];
+tspan = [0 1000];
 [t,X]=ode45(@(t,X) floww(t, X, a, b, N*p), tspan, x0);
 
 %here we store the final values of the integration, which will be close
@@ -98,9 +98,9 @@ function Acca = HH(A,B,a,b)
 Gamma1 = @(t,a,b) a*cos(2*pi*t);
 Gamma2 = @(t,a,b) b*sin(2*pi*t);
 
-%derivative of Gamma1, Gamma2 with respect to \theta=2*pi*t
-G1 = @(t,a,b) -a*sin(2*pi*t);
-G2 = @(t,a,b) b*cos(2*pi*t);
+%derivative of Gamma1, Gamma2 with respect to t
+G1 = @(t,a,b) 2*pi*(-a*sin(2*pi*t));
+G2 = @(t,a,b) 2*pi*(b*cos(2*pi*t));
 
 %function H as in the paper, equation XXX
 Acca=(1/(sqrt((Gamma1(A,a,b)-Gamma1(B,a,b))^2+(Gamma2(A,a,b)-Gamma2(B,a,b))^2)))*(G1(B,a,b)*(Gamma1(B,a,b)-Gamma1(A,a,b)) +G2(B,a,b)*(Gamma2(B,a,b)-Gamma2(A,a,b)));
