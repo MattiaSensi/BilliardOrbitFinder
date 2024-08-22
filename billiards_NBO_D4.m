@@ -15,21 +15,20 @@ Gamma2 = @(x,n,k) (1+k.*cos(2*n*pi*x)).*sin(2*pi*x);
 p=2;
 N=6;
 
-%X contains the initial conditions for the gradient flow; we are working
+%x0 contains the initial conditions for the gradient flow; we are working
 %with the values x which will then be evaluated in Gamma1 and Gamma2,
 %so these will be considered by the code to be mod 1
-X=zeros(N*p,1);
+x0=zeros(N*p,1);
 
-X(1)=1/2+0.05;
-X(6)=7/8;
+x0(1)=1/2+0.05;
+x0(6)=7/8;
 
 %here we impose D_4 symmetry
-X(3)=X(6)+1/4; X(12)=X(6)+1/2; X(9)=X(6)+3/4;
-X(10)=X(1)+1/4; X(7)=X(1)+1/2; X(4)=X(1)+3/4;
-X(11)=1/4-X(7); X(2)=7/4-X(10); X(8)=3/4-X(4); X(5)=5/4-X(1);
+x0(3)=x0(6)+1/4; x0(12)=x0(6)+1/2; x0(9)=x0(6)+3/4;
+x0(10)=x0(1)+1/4; x0(7)=x0(1)+1/2; x0(4)=x0(1)+3/4;
+x0(11)=1/4-x0(7); x0(2)=7/4-x0(10); x0(8)=3/4-x0(4); x0(5)=5/4-x0(1);
 
 %standard forward integration of the dynamical system with ode45
-x0 = X;
 tspan = [0 3000];
 [t,X]=ode45(@(t,X) floww(t, X, N*p, n, k), tspan, x0);
 
@@ -40,7 +39,7 @@ X1=X(end,:);
 %discretization to plot the D_n table
 howmany=2000;
 
-%lines 44-58 plot the orbit corresponding to the given initial condition in cyan
+%lines 43-57 plot the orbit corresponding to the given initial condition in cyan
 figure
 
 hold on
@@ -57,7 +56,7 @@ set(gcf,'color','w');
 
 hold off
 
-%lines 62-76 plot the orbit corresponding to the final orbit,
+%lines 61-75 plot the orbit corresponding to the final orbit,
 %an approximation of the desired NBO, in blue
 figure
 
@@ -105,6 +104,6 @@ Gamma2 = @(x,n,k) (1+k.*cos(2*n*pi*x)).*sin(2*pi*x);
 G1 = @(x,n,k) 2*pi*(-n*k*sin(2*n*pi*x)*cos(2*pi*x)-(1+k*cos(2*n*pi*x))*sin(2*pi*x));
 G2 = @(x,n,k) 2*pi*(-n*k*sin(2*n*pi*x)*sin(2*pi*x)+(1+k*cos(2*n*pi*x))*cos(2*pi*x));
 
-%function H as in the paper, equation XXX
+%function H as in the paper, equation (XX)
 Acca=(1/(sqrt((Gamma1(A,n,k)-Gamma1(B,n,k))^2+(Gamma2(A,n,k)-Gamma2(B,n,k))^2)))*(G1(B,n,k)*(Gamma1(B,n,k)-Gamma1(A,n,k)) +G2(B,n,k)*(Gamma2(B,n,k)-Gamma2(A,n,k)));
 end

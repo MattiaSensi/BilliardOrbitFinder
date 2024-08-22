@@ -14,21 +14,20 @@ Gamma2 = @(x,a,b) b*sin(2*pi*x);
 p=2;
 N=4;
 
-%X contains the initial conditions for the gradient flow; we are working
+%x0 contains the initial conditions for the gradient flow; we are working
 %with the values x which will then be evaluated in Gamma1 and Gamma2,
 %so these will be considered by the code to be mod 1
-X=zeros(N*p,1);
+x0=zeros(N*p,1);
 
 %here we impose a time reversal symmetry with a candy-shaped orbit
 for ii=1:N*p/2
-    X(ii)=(-1)^(ii+1)*(2*ii-1)/(2*N*p);
+    x0(ii)=(-1)^(ii+1)*(2*ii-1)/(2*N*p);
 end
 for ii=N*p/2+1:N*p
-    X(ii)=-X(N*p-ii+1);
+    x0(ii)=-x0(N*p-ii+1);
 end
 
 %standard forward integration of the dynamical system with ode45
-x0 = X;
 tspan = [0 1000];
 [t,X]=ode45(@(t,X) floww(t, X, a, b, N*p), tspan, x0);
 
@@ -39,7 +38,7 @@ X1=X(end,:);
 %discretization to plot the ellipse
 howmany=2000;
 
-%lines 43-57 plot the orbit corresponding to the given initial condition in cyan
+%lines 42-56 plot the orbit corresponding to the given initial condition in cyan
 figure
 
 hold on
@@ -56,7 +55,7 @@ set(gcf,'color','w');
 
 hold off
 
-%lines 61-75 plot the orbit corresponding to the final orbit,
+%lines 60-74 plot the orbit corresponding to the final orbit,
 %an approximation of the desired NBO, in blue
 figure
 
@@ -101,6 +100,6 @@ Gamma2 = @(x,a,b) b*sin(2*pi*x);
 G1 = @(x,a,b) 2*pi*(-a*sin(2*pi*x));
 G2 = @(x,a,b) 2*pi*(b*cos(2*pi*x));
 
-%function H as in the paper, equation XXX
+%function H as in the paper, equation (XX)
 Acca=(1/(sqrt((Gamma1(A,a,b)-Gamma1(B,a,b))^2+(Gamma2(A,a,b)-Gamma2(B,a,b))^2)))*(G1(B,a,b)*(Gamma1(B,a,b)-Gamma1(A,a,b)) +G2(B,a,b)*(Gamma2(B,a,b)-Gamma2(A,a,b)));
 end
