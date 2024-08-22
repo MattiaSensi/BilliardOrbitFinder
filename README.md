@@ -7,7 +7,7 @@ If you use these codes for your research, we kindly ask you to cite our preprint
 
 The gist of the algorithm is as follows:
 
-Given a table of the form, for x in [0,1),
+Consider a table of the form, for x in [0,1),
 
 γ(x)=(γ_1(x),γ_2(x))
 
