@@ -21,7 +21,7 @@ We then provide an initial condition for the dynamics in the form of a sequence 
 
 These initial conditions can be forced to possess some symmetry (e.g., for N=4, we may provide x_1, x_2 and then give the relations x_3=-x_2, x_4=-x_1), and such symmetry can be enforced throughout the gradient dynamics, by including them in the ODE solver (floww) in the Matlab code.
 
-The ODE solver takes as input the initial conditions provided in the code, and integrates the system forward in time until the values of x_i approximately reach an equilibrium in the prescribed symmetry space. By construction, such equilibrium is a proper orbit for the billiard, i.e. the angle of incidence and the angle of refraction on each point of the orbit are the same.
+The ODE solver takes as input the initial conditions provided in the code, and integrates the system forward in time so that the values of x_i approximately reach an equilibrium in the prescribed symmetry space. By construction, such equilibrium is a proper orbit for the billiard, i.e. the angle of incidence and the angle of refraction on each point of the orbit are the same.
 
 The examples included in this folder are the following:
 
