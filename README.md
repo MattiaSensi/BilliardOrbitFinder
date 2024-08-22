@@ -41,4 +41,4 @@ For elliptic billiards, we include
 
 For D_n symmetric billiards, we include
 
-4. billiard_NBO_D4.m, which was used to produce figure 2b) in the manuscript
+4. billiard_NBO_D4.m, which was used to produce figure 3a) in the manuscript
