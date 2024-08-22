@@ -31,7 +31,7 @@ x(11)=1/4-x(7); x(2)=7/4-x(10); x(8)=3/4-x(4); x(5)=5/4-x(1);
 
 %standard forward integration of the dynamical system with ode45
 x0 = x;
-tspan = [0 1000];
+tspan = [0 3000];
 [t,X]=ode45(@(t,X) floww(t, X, N*p, n, k), tspan, x0);%,
 
 %here we store the final values of the integration, which will be close
