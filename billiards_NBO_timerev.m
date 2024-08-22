@@ -31,9 +31,9 @@ end
 tspan = [0 1000];
 [t,X]=ode45(@(t,X) floww(t, X, a, b, N*p), tspan, x0);
 
-%in X1 we store the final values of the integration, which will be close
+%in x1 we store the final values of the integration, which will be close
 %to the equilibrium (i.e. the NBO) is tspan is large enough
-X1=X(end,:);
+x1=X(end,:);
 
 %discretization to plot the ellipse
 howmany=2000;
@@ -63,10 +63,10 @@ hold on
 ttime=linspace(0,1,howmany);
 
 plot(Gamma1(ttime,a,b),Gamma2(ttime,a,b),'Color','k','LineWidth',1)
-for jj=1:length(X1)-1
-    line([Gamma1(X1(jj),a,b) Gamma1(X1(jj+1),a,b)],[Gamma2(X1(jj),a,b) Gamma2(X1(jj+1),a,b)],'Color','b','LineWidth',1.5);
+for jj=1:length(x1)-1
+    line([Gamma1(x1(jj),a,b) Gamma1(x1(jj+1),a,b)],[Gamma2(x1(jj),a,b) Gamma2(x1(jj+1),a,b)],'Color','b','LineWidth',1.5);
 end
-line([Gamma1(X1(end),a,b) Gamma1(X1(1),a,b)],[Gamma2(X1(end),a,b) Gamma2(X1(1),a,b)],'Color','b','LineWidth',1.5)
+line([Gamma1(x1(end),a,b) Gamma1(x1(1),a,b)],[Gamma2(x1(end),a,b) Gamma2(x1(1),a,b)],'Color','b','LineWidth',1.5)
 axis equal
 axis off
 set(gcf,'color','w');

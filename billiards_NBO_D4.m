@@ -32,9 +32,9 @@ x0(11)=1/4-x0(7); x0(2)=7/4-x0(10); x0(8)=3/4-x0(4); x0(5)=5/4-x0(1);
 tspan = [0 3000];
 [t,X]=ode45(@(t,X) floww(t, X, N*p, n, k), tspan, x0);
 
-%in X1 we store the final values of the integration, which will be close
+%in x1 we store the final values of the integration, which will be close
 %to the equilibrium (i.e. the NBO) is tspan is large enough
-X1=X(end,:);
+x1=X(end,:);
 
 %discretization to plot the D_n table
 howmany=2000;
@@ -64,10 +64,10 @@ hold on
 ttime=linspace(0,1,howmany);
 hold on
 plot(Gamma1(ttime,n,k),Gamma2(ttime,n,k),'Color','k','LineWidth',1)
-for jj=1:length(X1)-1  %plots final orbit
-    line([Gamma1(X1(jj),n,k) Gamma1(X1(jj+1),n,k)],[Gamma2(X1(jj),n,k) Gamma2(X1(jj+1),n,k)],'Color','b','LineWidth',1.5);
+for jj=1:length(x1)-1  %plots final orbit
+    line([Gamma1(x1(jj),n,k) Gamma1(x1(jj+1),n,k)],[Gamma2(x1(jj),n,k) Gamma2(x1(jj+1),n,k)],'Color','b','LineWidth',1.5);
 end
-line([Gamma1(X1(end),n,k) Gamma1(X1(1),n,k)],[Gamma2(X1(end),n,k) Gamma2(X1(1),n,k)],'Color','b','LineWidth',1.5)
+line([Gamma1(x1(end),n,k) Gamma1(x1(1),n,k)],[Gamma2(x1(end),n,k) Gamma2(x1(1),n,k)],'Color','b','LineWidth',1.5)
 axis equal
 axis off
 set(gcf,'color','w');
