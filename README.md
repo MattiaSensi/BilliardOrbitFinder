@@ -7,17 +7,17 @@ If you use these codes for your research, we kindly ask you to cite our preprint
 
 The gist of the algorithm is as follows:
 
-Given a table of the form, for t in [0,1),
+Given a table of the form, for x in [0,1),
 
-γ(t)=(γ_1(t),γ_2(t))
+γ(x)=(γ_1(x),γ_2(x))
 
 and the corresponding derivative
 
-γ'(t)=(γ'_1(t),γ'_2(t)).
+γ'(x)=(γ'_1(x),γ'_2(x)).
 
 Notice that these tables usually depend on one or more parameters, e.g. the lengths of the axes of an elliptic billiard.
 
-We then provide an initial condition for the dynamics in the form of a sequence of N values t_i, i=1,2,...,N in [0,1).
+We then provide an initial condition for the dynamics in the form of a sequence of N values x_i, i=1,2,...,N in [0,1).
 
 These initial conditions can be forced to possess some symmetry (e.g., for N=4, we may provide x_1, x_2 and then give the relations x_3=-x_2, x_4=-x_1), and such symmetry can be enforced throughout the gradient dynamics, by including them in the ODE solver (floww) in the Matlab code.
 
