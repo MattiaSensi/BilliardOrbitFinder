@@ -37,8 +37,6 @@ For elliptic billiards, we include
 
 2. billiards_NBO_timerev.m, in which the initial conditions satisfy a time reversal symmetry, and form a candy-shaped orbit
 
-3. billiards_NBO_updown.m, in which the initial conditions satisfy an up-down symmetry, and form a candy-shaped orbit
-
 For D_n symmetric billiards, we include
 
-4. billiard_NBO_D4.m, which was used to produce figure 3a) in the manuscript
+3. billiard_NBO_D4.m, which was used to produce figure 3a) in the manuscript
