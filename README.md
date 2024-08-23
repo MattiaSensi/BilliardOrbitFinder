@@ -7,7 +7,7 @@ If you use these codes for your research, we kindly ask you to cite our preprint
 
 The gist of the algorithm is as follows:
 
-Consider a table of the form, for x in [0,1),
+Consider a billiard table of the form, for x in [0,1),
 
 γ(x)=(γ_1(x),γ_2(x))
 
@@ -15,7 +15,7 @@ and the corresponding derivative
 
 γ'(x)=(γ'_1(x),γ'_2(x)).
 
-Notice that these tables usually depend on one or more parameters, e.g. the lengths of the axes of an elliptic billiard.
+Notice that these tables may depend on one or more parameters, e.g. the lengths of the axes of an elliptic billiard. This is the case for all the examples we include here.
 
 We then provide an initial condition for the dynamics in the form of a sequence of N values x_i, i=1,2,...,N in [0,1).
 
