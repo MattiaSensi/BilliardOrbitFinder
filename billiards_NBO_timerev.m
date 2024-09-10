@@ -12,7 +12,7 @@ Gamma2 = @(x,a,b) b*sin(2*pi*x);
 %p and N to define a (Np,Nq) orbit, starting from an (Np,Nq) state.
 %q is determined by the initial conditions.
 p=2;
-N=4;
+N=14;
 
 %x0 contains the initial conditions for the gradient flow; we are working
 %with the values x which will then be evaluated in Gamma1 and Gamma2,
@@ -96,9 +96,10 @@ function Acca = HH(A,B,a,b)
 Gamma1 = @(x,a,b) a*cos(2*pi*x);
 Gamma2 = @(x,a,b) b*sin(2*pi*x);
 
-%derivative of Gamma1, Gamma2 with respect to x
-G1 = @(x,a,b) 2*pi*(-a*sin(2*pi*x));
-G2 = @(x,a,b) 2*pi*(b*cos(2*pi*x));
+%derivative of Gamma1, Gamma2 with respect to x (a multiplicative 2*pi
+%contribution was removed to reduce computational time)
+G1 = @(x,a,b) -a*sin(2*pi*x);
+G2 = @(x,a,b) b*cos(2*pi*x);
 
 %function H as in the paper, equation (XX)
 Acca=(1/(sqrt((Gamma1(A,a,b)-Gamma1(B,a,b))^2+(Gamma2(A,a,b)-Gamma2(B,a,b))^2)))*(G1(B,a,b)*(Gamma1(B,a,b)-Gamma1(A,a,b)) +G2(B,a,b)*(Gamma2(B,a,b)-Gamma2(A,a,b)));

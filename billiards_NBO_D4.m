@@ -94,15 +94,15 @@ dydt(N)= HH(X(N-1),X(N),n,k)+HH(X(1),X(N),n,k);
 
 end
 
-
 function Acca = HH(A,B,n,k)
 %the same parametrization given in lines 10 and 11
 Gamma1 = @(x,n,k) (1+k.*cos(2*n*pi*x)).*cos(2*pi*x);
 Gamma2 = @(x,n,k) (1+k.*cos(2*n*pi*x)).*sin(2*pi*x);
 
-%derivative of Gamma1, Gamma2 with respect to x
-G1 = @(x,n,k) 2*pi*(-n*k*sin(2*n*pi*x)*cos(2*pi*x)-(1+k*cos(2*n*pi*x))*sin(2*pi*x));
-G2 = @(x,n,k) 2*pi*(-n*k*sin(2*n*pi*x)*sin(2*pi*x)+(1+k*cos(2*n*pi*x))*cos(2*pi*x));
+%derivative of Gamma1, Gamma2 with respect to x (a multiplicative 2*pi
+%contribution was removed to reduce computational time)
+G1 = @(x,n,k) -n*k*sin(2*n*pi*x)*cos(2*pi*x)-(1+k*cos(2*n*pi*x))*sin(2*pi*x);
+G2 = @(x,n,k) -n*k*sin(2*n*pi*x)*sin(2*pi*x)+(1+k*cos(2*n*pi*x))*cos(2*pi*x);
 
 %function H as in the paper, equation (XX)
 Acca=(1/(sqrt((Gamma1(A,n,k)-Gamma1(B,n,k))^2+(Gamma2(A,n,k)-Gamma2(B,n,k))^2)))*(G1(B,n,k)*(Gamma1(B,n,k)-Gamma1(A,n,k)) +G2(B,n,k)*(Gamma2(B,n,k)-Gamma2(A,n,k)));
