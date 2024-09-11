@@ -31,6 +31,6 @@ For elliptic billiards, we include
 
 2. billiards_NBO_timerev.m, in which the initial conditions satisfy a time reversal symmetry, and therefore form a candy-shape
 
-For a D4-symmetric Limacon-type billiards
+For a D4-symmetric Limacon-type billiards (WE HAVE TO CHANGE THIS ONE!)
 
 3. billiards_NBO_D4.m, which was used to produce figure 3a) in the manuscript
