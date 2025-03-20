@@ -19,14 +19,15 @@ N=2;
 %so these will be considered by the code to be mod 1
 x0=zeros(N*p,1);
 
-%here we use formula (XX) from the manuscript
+%here we use formula (36) from the manuscript
 for ii=1:N*p
     x0(ii)=(-1)^(ii+1)*(1/4)+sin(4*pi*(ii-1/2)/(N*p))/5;
 end
 
 %standard forward integration of the dynamical system with ode45
-tspan = [0 1000];
-[t,X]=ode45(@(t,X) floww(t, X, a, b, N*p), tspan, x0);
+tspan = [0 100];
+opts = odeset('MaxStep',.01,'AbsTol',1e-09,'RelTol',1e-11);
+[t,X]=ode45(@(t,X) floww(t, X, a, b, N*p), tspan, x0, opts);
 
 %in x1 we store the final values of the integration, which will be close
 %to the equilibrium (i.e. the NBO) is tspan is large enough
@@ -35,7 +36,7 @@ x1=X(end,:);
 %discretization to plot the ellipse
 howmany=2000;
 
-%lines 39-53 plot the orbit corresponding to the given initial condition in cyan
+%lines 40-54 plot the orbit corresponding to the given initial condition in cyan
 figure
 
 hold on
@@ -52,7 +53,7 @@ set(gcf,'color','w');
 
 hold off
 
-%lines 57-71 plot the orbit corresponding to the final orbit,
+%lines 58-72 plot the orbit corresponding to the final orbit,
 %an approximation of the desired NBO, in blue
 figure
 
@@ -97,6 +98,6 @@ Gamma2 = @(x,a,b) b*sin(2*pi*x);
 G1 = @(x,a,b) -a*sin(2*pi*x);
 G2 = @(x,a,b) b*cos(2*pi*x);
 
-%function H as in the paper, equation (XX)
+%this function combines F^- and F^+ as in the paper, eq. (23) and (24)
 Acca=(1/(sqrt((Gamma1(A,a,b)-Gamma1(B,a,b))^2+(Gamma2(A,a,b)-Gamma2(B,a,b))^2)))*(G1(B,a,b)*(Gamma1(B,a,b)-Gamma1(A,a,b)) +G2(B,a,b)*(Gamma2(B,a,b)-Gamma2(A,a,b)));
 end

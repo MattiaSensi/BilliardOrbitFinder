@@ -29,8 +29,9 @@ x0(10)=x0(1)+1/4; x0(7)=x0(1)+1/2; x0(4)=x0(1)+3/4;
 x0(11)=1/4-x0(7); x0(2)=7/4-x0(10); x0(8)=3/4-x0(4); x0(5)=5/4-x0(1);
 
 %standard forward integration of the dynamical system with ode45
-tspan = [0 3000];
-[t,X]=ode45(@(t,X) floww(t, X, N*p, n, alp), tspan, x0);
+tspan = [0 100];
+opts = odeset('MaxStep',.01,'AbsTol',1e-09,'RelTol',1e-11);
+[t,X]=ode45(@(t,X) floww(t, X, N*p, n, alp), tspan, x0, opts);
 
 %in x1 we store the final values of the integration, which will be close
 %to the equilibrium (i.e. the NBO) is tspan is large enough
@@ -39,7 +40,7 @@ x1=X(end,:);
 %discretization to plot the D_n table
 howmany=2000;
 
-%lines 43-57 plot the orbit corresponding to the given initial condition in cyan
+%lines 44-58 plot the orbit corresponding to the given initial condition in cyan
 figure
 
 hold on
@@ -56,7 +57,7 @@ set(gcf,'color','w');
 
 hold off
 
-%lines 61-75 plot the orbit corresponding to the final orbit,
+%lines 62-76 plot the orbit corresponding to the final orbit,
 %an approximation of the desired NBO, in blue
 figure
 
@@ -104,6 +105,6 @@ Gamma2 = @(x,n,alp) (1+alp.*cos(2*n*pi*x)).*sin(2*pi*x);
 G1 = @(x,n,alp) -n*alp*sin(2*n*pi*x)*cos(2*pi*x)-(1+alp*cos(2*n*pi*x))*sin(2*pi*x);
 G2 = @(x,n,alp) -n*alp*sin(2*n*pi*x)*sin(2*pi*x)+(1+alp*cos(2*n*pi*x))*cos(2*pi*x);
 
-%function H as in the paper, equation (XX)
+%this function combines F^- and F^+ as in the paper, eq. (23) and (24)
 Acca=(1/(sqrt((Gamma1(A,n,alp)-Gamma1(B,n,alp))^2+(Gamma2(A,n,alp)-Gamma2(B,n,alp))^2)))*(G1(B,n,alp)*(Gamma1(B,n,alp)-Gamma1(A,n,alp)) +G2(B,n,alp)*(Gamma2(B,n,alp)-Gamma2(A,n,alp)));
 end
