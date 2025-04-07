@@ -1,5 +1,5 @@
 %If you use this code, kindly cite our preprint:
-%https://arxiv.org/abs/AAAA.BBBBB
+%https://arxiv.org/abs/2504.03574
 
 %n corresponds to the D_n symmetry class; for convexity, one needs
 %alpha<1/(1+n^2). Refer to Example 4.1, (7) and Appendix A
