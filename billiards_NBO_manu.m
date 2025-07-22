@@ -35,7 +35,7 @@ x1=X(end,:);
 %discretization to plot the ellipse
 howmany=2000;
 
-%lines 39-53 plot the orbit corresponding to the given initial condition in cyan
+%lines 39-53 plot the initial condition in cyan
 figure
 
 hold on
@@ -52,7 +52,7 @@ set(gcf,'color','w');
 
 hold off
 
-%lines 57-71 plot the orbit corresponding to the final orbit,
+%lines 57-71 plot the orbit corresponding to the orbit,
 %an approximation of the desired NBO, in blue
 figure
 
