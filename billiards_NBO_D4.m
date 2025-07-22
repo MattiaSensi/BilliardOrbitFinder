@@ -10,15 +10,14 @@ alp=0.05;    %alpha
 Gamma1 = @(x,n,alp) (1+alp.*cos(2*n*pi*x)).*cos(2*pi*x);
 Gamma2 = @(x,n,alp) (1+alp.*cos(2*n*pi*x)).*sin(2*pi*x);
 
-%p and N to define a (Np,Nq) orbit, starting from an (Np,Nq) state.
+%p to define a (p,q) orbit, starting from an (p,q) state.
 %q is determined by the initial conditions.
-p=2;
-N=6;
+p=12;
 
 %x0 contains the initial conditions for the gradient flow; we are working
 %with the values x which will then be evaluated in Gamma1 and Gamma2,
 %so these will be considered by the code to be mod 1
-x0=zeros(N*p,1);
+x0=zeros(p,1);
 
 x0(1)=1/2+0.05;
 x0(6)=7/8;
@@ -31,7 +30,7 @@ x0(11)=1/4-x0(7); x0(2)=7/4-x0(10); x0(8)=3/4-x0(4); x0(5)=5/4-x0(1);
 %standard forward integration of the dynamical system with ode45
 tspan = [0 100];
 opts = odeset('MaxStep',.01,'AbsTol',1e-09,'RelTol',1e-11);
-[t,X]=ode45(@(t,X) floww(t, X, N*p, n, alp), tspan, x0, opts);
+[t,X]=ode45(@(t,X) floww(t, X, p, n, alp), tspan, x0, opts);
 
 %in x1 we store the final values of the integration, which will be close
 %to the equilibrium (i.e. the NBO) is tspan is large enough
@@ -40,7 +39,7 @@ x1=X(end,:);
 %discretization to plot the D_n table
 howmany=2000;
 
-%lines 44-58 plot the orbit corresponding to the given initial condition in cyan
+%lines 43-57 plot the orbit corresponding to the given initial condition in cyan
 figure
 
 hold on
@@ -57,7 +56,7 @@ set(gcf,'color','w');
 
 hold off
 
-%lines 62-76 plot the orbit corresponding to the final orbit,
+%lines 61-75 plot the orbit corresponding to the final orbit,
 %an approximation of the desired NBO, in blue
 figure
 

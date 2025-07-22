@@ -9,28 +9,27 @@ b=4.5;
 Gamma1 = @(x,a,b) a*cos(2*pi*x);
 Gamma2 = @(x,a,b) b*sin(2*pi*x);
 
-%p and N to define a (Np,Nq) orbit, starting from an (Np,Nq) state.
+%p to define a (p,q) orbit, starting from an (p,q) state.
 %q is determined by the initial conditions.
-p=2;
-N=10;
+p=20;
 
 %x0 contains the initial conditions for the gradient flow; we are working
 %with the values x which will then be evaluated in Gamma1 and Gamma2,
 %so these will be considered by the code to be mod 1
-x0=zeros(N*p,1);
+x0=zeros(p,1);
 
 %here we impose a time reversal symmetry with a candy-shaped orbit
-for ii=1:N*p/2
-    x0(ii)=(-1)^(ii+1)*(2*ii-1)/(2*N*p);
+for ii=1:p/2
+    x0(ii)=(-1)^(ii+1)*(2*ii-1)/(2*p);
 end
-for ii=N*p/2+1:N*p
-    x0(ii)=-x0(N*p-ii+1);
+for ii=p/2+1:p
+    x0(ii)=-x0(p-ii+1);
 end
 
 %standard forward integration of the dynamical system with ode45
 tspan = [0 100];
 opts = odeset('MaxStep',.01,'AbsTol',1e-09,'RelTol',1e-11);
-[t,X]=ode45(@(t,X) floww(t, X, a, b, N*p), tspan, x0, opts);
+[t,X]=ode45(@(t,X) floww(t, X, a, b, p), tspan, x0, opts);
 
 %in x1 we store the final values of the integration, which will be close
 %to the equilibrium (i.e. the NBO) is tspan is large enough
@@ -39,7 +38,7 @@ x1=X(end,:);
 %discretization to plot the ellipse
 howmany=2000;
 
-%lines 43-57 plot the orbit corresponding to the given initial condition in cyan
+%lines 42-56 plot the orbit corresponding to the given initial condition in cyan
 figure
 
 hold on
@@ -56,7 +55,7 @@ set(gcf,'color','w');
 
 hold off
 
-%lines 61-75 plot the orbit corresponding to the final orbit,
+%lines 60-74 plot the orbit corresponding to the final orbit,
 %an approximation of the desired NBO, in blue
 figure
 
