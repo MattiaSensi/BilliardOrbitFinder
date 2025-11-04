@@ -34,5 +34,6 @@ For elliptic billiards, we include
 For a D4-symmetric Limacon-type billiard
 
 3. billiards_NBO_D4.m, which was used to produce figure 1c) in the manuscript
+4. billiards_NBO_D4.py, the same code but in python
 
 The file "D4.mp4" showcases the algorithm in action with the setup of the last file, billiards_NBO_D4.m, in a short video.
