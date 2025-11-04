@@ -99,7 +99,7 @@ x1 = X[-1, :]
 # discretization to plot the D_n table
 howmany = 2000
 
-# lines 102-116 plot the initial condition in cyan
+# lines 103-116 plot the initial condition in cyan
 plt.figure()
 plt.axis('equal')
 plt.axis('off')
