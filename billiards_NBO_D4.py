@@ -20,7 +20,7 @@ def Gamma2(x, n, alp):
 
 # gradient flow
 def HH(A, B, n, alp):
-    # the same parametrization given in lines 11 and 12
+    # the same parametrization given in lines 16 and 17
     def Gamma1(x, n, alp):
         return (1 + alp * np.cos(2 * n * np.pi * x)) * np.cos(2 * np.pi * x)
     def Gamma2(x, n, alp):
@@ -115,7 +115,7 @@ plt.plot([Gamma1(x0[-1], n, alp), Gamma1(x0[0], n, alp)],
          color='c', linewidth=1.5)
 plt.gcf().set_facecolor('w')
 
-# lines 120-133 plot the orbit corresponding to the orbit,
+# lines 120-132 plot the orbit corresponding to the orbit,
 # an approximation of the desired NBO, in blue
 plt.figure()
 plt.axis('equal')
@@ -130,4 +130,5 @@ plt.plot([Gamma1(x1[-1], n, alp), Gamma1(x1[0], n, alp)],
          [Gamma2(x1[-1], n, alp), Gamma2(x1[0], n, alp)],
          color='b', linewidth=1.5)
 plt.gcf().set_facecolor('w')
+
 plt.show()
