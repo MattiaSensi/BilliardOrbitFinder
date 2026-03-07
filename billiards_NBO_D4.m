@@ -1,5 +1,5 @@
-%If you use this code, kindly cite our preprint:
-%https://arxiv.org/abs/2504.03574
+%If you use this code, kindly cite our paper:
+%https://doi.org/10.1007/s00023-026-01670-7
 
 %n corresponds to the D_n symmetry class; for convexity, one needs
 %alpha<1/(1+n^2). Refer to Example 4.1, (7) and Appendix A
@@ -106,4 +106,5 @@ G2 = @(x,n,alp) -n*alp*sin(2*n*pi*x)*sin(2*pi*x)+(1+alp*cos(2*n*pi*x))*cos(2*pi*
 
 %this function combines F^- and F^+ as in the paper, eq. (23) and (24)
 Acca=(1/(sqrt((Gamma1(A,n,alp)-Gamma1(B,n,alp))^2+(Gamma2(A,n,alp)-Gamma2(B,n,alp))^2)))*(G1(B,n,alp)*(Gamma1(B,n,alp)-Gamma1(A,n,alp)) +G2(B,n,alp)*(Gamma2(B,n,alp)-Gamma2(A,n,alp)));
+
 end
