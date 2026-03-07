@@ -1,5 +1,5 @@
-# If you use this code, kindly cite our preprint:
-# https://arxiv.org/abs/2504.03574
+# If you use this code, kindly cite our paper:
+# https://doi.org/10.1007/s00023-026-01670-7
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -132,3 +132,4 @@ plt.plot([Gamma1(x1[-1], n, alp), Gamma1(x1[0], n, alp)],
 plt.gcf().set_facecolor('w')
 
 plt.show()
+
