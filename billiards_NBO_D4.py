@@ -20,7 +20,7 @@ def Gamma2(x, n, alp):
 
 # gradient flow
 def HH(A, B, n, alp):
-    # the same parametrization given in lines 16 and 17
+    # the same parametrization given in lines 16 and 19
     def Gamma1(x, n, alp):
         return (1 + alp * np.cos(2 * n * np.pi * x)) * np.cos(2 * np.pi * x)
     def Gamma2(x, n, alp):
@@ -70,8 +70,6 @@ def floww(t, X):
     dydt = np.zeros(p)
     X = X.copy()
 
-    X[5] = 7/8
-
     # We enforce the same symmetry as in the initial conditions
     X[2]  = X[5] + 1/4
     X[11] = X[5] + 1/2
@@ -99,7 +97,7 @@ x1 = X[-1, :]
 # discretization to plot the D_n table
 howmany = 2000
 
-# lines 103-116 plot the initial condition in cyan
+# lines 101-114 plot the initial condition in cyan
 plt.figure()
 plt.axis('equal')
 plt.axis('off')
@@ -115,7 +113,7 @@ plt.plot([Gamma1(x0[-1], n, alp), Gamma1(x0[0], n, alp)],
          color='c', linewidth=1.5)
 plt.gcf().set_facecolor('w')
 
-# lines 120-132 plot the orbit corresponding to the orbit,
+# lines 118-130 plot the orbit corresponding to the orbit,
 # an approximation of the desired NBO, in blue
 plt.figure()
 plt.axis('equal')
