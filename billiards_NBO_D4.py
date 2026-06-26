@@ -33,7 +33,7 @@ def HH(A, B, n, alp):
     def G2(x, n, alp):
         return -n * alp * np.sin(2 * n * np.pi * x) * np.sin(2 * np.pi * x) + (1 + alp * np.cos(2 * n * np.pi * x)) * np.cos(2 * np.pi * x)
 
-    # this function combines F^- and F^+ as in the paper, eq. (23) and (24)
+    # this function combines F^- and F^+ as in the paper, eq. (24) and (25) on page 31
     denom = np.sqrt((Gamma1(A, n, alp) - Gamma1(B, n, alp))**2 + (Gamma2(A, n, alp) - Gamma2(B, n, alp))**2)
     Acca = (1 / denom) * (G1(B, n, alp) * (Gamma1(B, n, alp) - Gamma1(A, n, alp)) +
                           G2(B, n, alp) * (Gamma2(B, n, alp) - Gamma2(A, n, alp)))
