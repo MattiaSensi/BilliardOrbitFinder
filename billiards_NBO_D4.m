@@ -104,7 +104,7 @@ Gamma2 = @(x,n,alp) (1+alp.*cos(2*n*pi*x)).*sin(2*pi*x);
 G1 = @(x,n,alp) -n*alp*sin(2*n*pi*x)*cos(2*pi*x)-(1+alp*cos(2*n*pi*x))*sin(2*pi*x);
 G2 = @(x,n,alp) -n*alp*sin(2*n*pi*x)*sin(2*pi*x)+(1+alp*cos(2*n*pi*x))*cos(2*pi*x);
 
-%this function combines F^- and F^+ as in the paper, eq. (23) and (24)
+%this function combines F^- and F^+ as in the paper, eq. (24) and (25) on page 31
 Acca=(1/(sqrt((Gamma1(A,n,alp)-Gamma1(B,n,alp))^2+(Gamma2(A,n,alp)-Gamma2(B,n,alp))^2)))*(G1(B,n,alp)*(Gamma1(B,n,alp)-Gamma1(A,n,alp)) +G2(B,n,alp)*(Gamma2(B,n,alp)-Gamma2(A,n,alp)));
 
 end
