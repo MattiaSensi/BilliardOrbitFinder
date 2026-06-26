@@ -101,7 +101,7 @@ Gamma2 = @(x,a,b) b*sin(2*pi*x);
 G1 = @(x,a,b) -a*sin(2*pi*x);
 G2 = @(x,a,b) b*cos(2*pi*x);
 
-%this function combines F^- and F^+ as in the paper, eq. (23) and (24)
+%this function combines F^- and F^+ as in the paper, eq. (24) and (25) on page 31
 Acca=(1/(sqrt((Gamma1(A,a,b)-Gamma1(B,a,b))^2+(Gamma2(A,a,b)-Gamma2(B,a,b))^2)))*(G1(B,a,b)*(Gamma1(B,a,b)-Gamma1(A,a,b)) +G2(B,a,b)*(Gamma2(B,a,b)-Gamma2(A,a,b)));
 
 end
